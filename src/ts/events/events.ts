@@ -9,7 +9,6 @@ export const appstart = function () {
     const cadbutton_click = document.getElementById('cadbutton') as HTMLDivElement;
     cadbutton_click.addEventListener('click', () =>{
         container.setAttribute('style','display: flex;');
-        
         cadform();
     });
 
@@ -20,11 +19,12 @@ export const appstart = function () {
     });
 };
 
-export const outform = function(pai: HTMLDivElement) {
+export const removeFormCad = function(pai: HTMLDivElement, filho: HTMLDivElement) {
     pai.addEventListener('click',() => {
         console.log(pai);
-        app.removeChild(pai);
-        // container.removeAttribute('style');
+        pai.removeChild(filho);
+        // pai.setAttribute('style','display: flex;');
+        pai.removeAttribute('style');
         
     });
 };

@@ -25,6 +25,5 @@ export const removeFormCad = function(pai: HTMLDivElement, filho: HTMLDivElement
         pai.removeChild(filho);
         // pai.setAttribute('style','display: flex;');
         pai.removeAttribute('style');
-        
     });
 };

@@ -1,10 +1,13 @@
+import { removeFormCad } from "../events/events.js";
 export const cadForm = function () {
     const container = document.getElementById("cadcontainer");
-    const buttonClose = document.createElement('h3');
-    buttonClose.setAttribute('class', 'closebutton');
-    buttonClose.setAttribute('id', 'closebutton');
-    buttonClose.setAttribute('style', 'margin-left:auto;margin-top:0px;width:60px;height:60px;z-index:2;');
-    buttonClose.innerHTML = '<h3>X<h3>';
+    const buttonClose = document.createElement("div");
+    buttonClose.setAttribute("class", "closebutton");
+    buttonClose.setAttribute("style", "margin-left:auto;margin-top:0px;width:60px;height:60px;z-index:2;");
+    //   buttonClose.innerHTML = "X";
+    const h4b = document.createElement("h3");
+    h4b.innerHTML = "X";
+    buttonClose.append(h4b);
     container.appendChild(buttonClose);
     const container_form = document.createElement("div");
     container_form.setAttribute("class", "cadbutton");
@@ -44,12 +47,12 @@ export const cadForm = function () {
     labelConsentInput.classList.add("consent-label");
     labelConsentInput.innerText =
         "Concordo em receber comunicações e ofertas personalizadas de acordo com meus interesses.";
-    const registerInputGroup = document.createElement('div');
-    registerInputGroup.setAttribute('class', 'cadbutton');
-    registerInputGroup.setAttribute('id', 'cadbutton');
-    registerInputGroup.setAttribute('style', 'margin-left:auto;margin-right:auto;margin-top:300px;width:180px;z-index:2');
-    const h3b = document.createElement('h3');
-    h3b.innerHTML = 'CADASTRAR';
+    const registerInputGroup = document.createElement("div");
+    registerInputGroup.setAttribute("class", "cadbutton");
+    registerInputGroup.setAttribute("id", "cadbutton");
+    registerInputGroup.setAttribute("style", "margin-left:auto;margin-right:auto;margin-top:300px;width:180px;z-index:2");
+    const h3b = document.createElement("h3");
+    h3b.innerHTML = "CADASTRAR";
     registerInputGroup.append(h3b);
     container_form.appendChild(headerForm);
     formRegister.appendChild(nameInput);
@@ -61,6 +64,6 @@ export const cadForm = function () {
     container_form.appendChild(divConsentInput);
     container_form.appendChild(registerInputGroup);
     container.appendChild(container_form);
-    //   removeFormCad(container, container_form);
+    removeFormCad(container, container_form, buttonClose);
     return container;
 };

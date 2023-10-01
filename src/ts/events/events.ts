@@ -19,10 +19,11 @@ export const appstart = function () {
     });
 };
 
-export const removeFormCad = function(pai: HTMLDivElement, filho: HTMLDivElement) {
-    pai.addEventListener('click',() => {
+export const removeFormCad = function(pai: HTMLDivElement, filho: HTMLDivElement, listener: HTMLHeadElement) {
+    listener.addEventListener('click',() => {
         console.log(pai);
         pai.removeChild(filho);
+        pai.removeChild(listener);
         // pai.setAttribute('style','display: flex;');
         pai.removeAttribute('style');
     });

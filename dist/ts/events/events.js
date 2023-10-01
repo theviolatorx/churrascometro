@@ -14,10 +14,11 @@ export const appstart = function () {
         app.removeChild(box_del);
     });
 };
-export const removeFormCad = function (pai, filho) {
-    pai.addEventListener('click', () => {
+export const removeFormCad = function (pai, filho, listener) {
+    listener.addEventListener('click', () => {
         console.log(pai);
         pai.removeChild(filho);
+        pai.removeChild(listener);
         // pai.setAttribute('style','display: flex;');
         pai.removeAttribute('style');
     });

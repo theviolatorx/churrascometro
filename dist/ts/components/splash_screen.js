@@ -7,6 +7,7 @@ const splash = function () {
     app.appendChild(cadcontainer);
     const container = document.createElement('div');
     container.setAttribute('class', 'container');
+    container.setAttribute('id', 'container');
     const box = document.createElement('div');
     box.setAttribute('id', 'cx');
     box.setAttribute('class', 'box');

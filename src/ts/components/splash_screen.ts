@@ -9,6 +9,7 @@ const splash = function() {
 
     const container = document.createElement('div') as HTMLDivElement;
     container.setAttribute('class','container');
+    container.setAttribute('id','container');
     const box = document.createElement('div') as HTMLDivElement;
     box.setAttribute('id','cx');
     box.setAttribute('class','box');

@@ -2,24 +2,23 @@ import { app } from '../components/main.js';
 import { cadForm } from '../components/cadform.js';
 export const appstart = function () {
     // const box_del = document.getElementsByClassName('box') as HTMLCollectionOf<Element>;
-    const box_del = document.getElementById('cx');
-    const container = document.getElementById('cadcontainer');
+    const container = document.getElementById('container');
+    const cadcontainer = document.getElementById('cadcontainer');
     const cadbutton_click = document.getElementById('cadbutton');
     cadbutton_click.addEventListener('click', () => {
-        container.setAttribute('style', 'display: flex;');
+        cadcontainer.setAttribute('style', 'display: flex;');
         cadForm();
     });
     const h2 = document.getElementById('title_splash');
     h2.addEventListener('click', () => {
-        app.removeChild(box_del);
+        console.log(container);
+        app.removeChild(container);
     });
 };
 export const removeFormCad = function (pai, filho, listener) {
     listener.addEventListener('click', () => {
-        console.log(pai);
         pai.removeChild(filho);
         pai.removeChild(listener);
-        // pai.setAttribute('style','display: flex;');
         pai.removeAttribute('style');
     });
 };

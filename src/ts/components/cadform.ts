@@ -1,4 +1,4 @@
-import { removeFormCad } from "../events/events.js";
+import { removeFormCad, cadUser, userLocal } from "../events/events.js";
 
 export const cadForm = function () {
   const container = document.getElementById("cadcontainer") as HTMLDivElement;
@@ -9,8 +9,8 @@ export const cadForm = function () {
     "style",
     "margin-left:auto;margin-top:0px;width:60px;height:60px;z-index:2;"
   );
-//   buttonClose.innerHTML = "X";
-    const h4b = document.createElement("h3") as HTMLHeadElement;
+  //   buttonClose.innerHTML = "X";
+  const h4b = document.createElement("h3") as HTMLHeadElement;
   h4b.innerHTML = "X";
   buttonClose.append(h4b);
 
@@ -88,6 +88,7 @@ export const cadForm = function () {
   container_form.appendChild(registerInputGroup);
 
   container.appendChild(container_form);
-    removeFormCad(container, container_form, buttonClose);
+  removeFormCad(container, container_form, buttonClose);
+  cadUser(h3b, nameInput, emailInput, cityInput,consentInput, container, container_form, buttonClose);
   return container;
 };

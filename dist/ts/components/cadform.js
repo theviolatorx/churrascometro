@@ -1,4 +1,4 @@
-import { removeFormCad } from "../events/events.js";
+import { removeFormCad, cadUser } from "../events/events.js";
 export const cadForm = function () {
     const container = document.getElementById("cadcontainer");
     const buttonClose = document.createElement("div");
@@ -65,5 +65,6 @@ export const cadForm = function () {
     container_form.appendChild(registerInputGroup);
     container.appendChild(container_form);
     removeFormCad(container, container_form, buttonClose);
+    cadUser(h3b, nameInput, emailInput, cityInput, consentInput, container, container_form, buttonClose);
     return container;
 };

@@ -15,7 +15,7 @@ export const people = function(id: string, tittle: string) {
     people.appendChild(quantiPeople);
     quantiPeople.innerHTML = '00';
     quantiPeople.setAttribute('style','font-size: 3.5em;height: 50px;inset: 20px;margin-top: 80px;');
-    quantiPeople.setAttribute('id',id);
+    quantiPeople.setAttribute('id','qt'+id);
     
     // Botão Subtrair
     const botaoMinus = document.createElement('h2') as HTMLHeadElement;

@@ -53,7 +53,6 @@ export const cadUser = function (listener, nameInput, emailInput, cityInput, con
         }
     });
 };
-// TODO: Tela Churrascometro
 export const churrascometro = function () {
     app.appendChild(churras());
 };
@@ -66,6 +65,15 @@ export const actionButtonMinusPlus = function (evento, valor, action) {
         }
         valor.innerHTML = doubleZeros(vl);
         // console.log(action);
+    });
+};
+// TODO: Evento Mostrar Resultado
+export const actionCalcChurros = function (evento) {
+    evento.addEventListener('click', () => {
+        const man = Number(document.getElementById('qt1h').innerHTML);
+        const wom = Number(document.getElementById('qt2m').innerHTML);
+        const kid = Number(document.getElementById('qt3c').innerHTML);
+        console.log(man, wom, kid);
     });
 };
 // Funções Locais 

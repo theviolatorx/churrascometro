@@ -80,7 +80,7 @@ export const cadUser = function (
     }
   });
 };
-// TODO: Tela Churrascometro
+
 export const churrascometro = function () {
   app.appendChild(churras());
 }
@@ -95,6 +95,16 @@ export const actionButtonMinusPlus = function(evento: HTMLHeadElement, valor: HT
     valor.innerHTML = doubleZeros(vl);
     // console.log(action);
   });
+};
+
+// TODO: Evento Mostrar Resultado
+export const actionCalcChurros = function(evento: HTMLHeadElement){
+    evento.addEventListener('click',()=>{
+        const man:number = Number(document.getElementById('qt1h').innerHTML);
+        const wom:number = Number(document.getElementById('qt2m').innerHTML);
+        const kid:number = Number(document.getElementById('qt3c').innerHTML);
+        console.log(man, wom, kid);
+    });
 };
 
 
@@ -116,7 +126,6 @@ function removeNode(
   pai.removeChild(listener);
   pai.removeAttribute("style");
 }
-
 
 function validateEmail(email: string): boolean {
   var re: RegExp = /\S+@\S+\.\S+/;

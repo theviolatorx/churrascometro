@@ -17,26 +17,20 @@ export const people = function(id: string, tittle: string) {
     quantiPeople.setAttribute('style','font-size: 3.5em;height: 50px;inset: 20px;margin-top: 80px;');
     quantiPeople.setAttribute('id',id);
     
-    // Container do Botões Mais e Menos
-    // const containerBotoesMM = document.createElement('div') as HTMLDivElement;
-    // containerBotoesMM.classList.add('container-botoes');
-    // containerBotoesMM.setAttribute('style','height: 50px;inset: 20px;margin-top: 180px;');
-    // Botões Mais e Menos
+    // Botão Subtrair
     const botaoMinus = document.createElement('h2') as HTMLHeadElement;
     botaoMinus.setAttribute('id',id);
     botaoMinus.setAttribute('style','height: 50px;width: 60px;margin-top: 160px;');
     botaoMinus.innerHTML = '-';
     actionButtonMinusPlus(botaoMinus, quantiPeople, -1);
     
+    // Botão Somar
     const botaoPlus = document.createElement('h2') as HTMLHeadElement;
     botaoPlus.setAttribute('id',id);
     botaoPlus.setAttribute('style','height: 50px;width: 60px;margin-top: 160px;margin-left:160px;');
     botaoPlus.innerHTML = '+';
     actionButtonMinusPlus(botaoPlus, quantiPeople, +1);
 
-    // containerBotoesMM.appendChild(botaoMinus);
-    // containerBotoesMM.appendChild(botaoPlus);
-    // people.appendChild(containerBotoesMM);
     people.appendChild(botaoMinus);
     people.appendChild(botaoPlus);
 

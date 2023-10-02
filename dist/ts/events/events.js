@@ -5,7 +5,6 @@ import { screen_churrascometro as churras } from '../components/churrascometro.j
 export const userLocal = localStorage.getItem("userlocal");
 // Funções Exportadas 
 export const appstart = function () {
-    // const box_del = document.getElementsByClassName('box') as HTMLCollectionOf<Element>;
     const container = document.getElementById("container");
     const cadcontainer = document.getElementById("cadcontainer");
     if (!userLocal) {

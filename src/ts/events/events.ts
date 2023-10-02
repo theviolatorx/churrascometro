@@ -10,7 +10,6 @@ export const userLocal = localStorage.getItem("userlocal");
 // Funções Exportadas 
 
 export const appstart = function () {
-  // const box_del = document.getElementsByClassName('box') as HTMLCollectionOf<Element>;
   const container = document.getElementById("container") as Element;
   const cadcontainer = document.getElementById(
     "cadcontainer"

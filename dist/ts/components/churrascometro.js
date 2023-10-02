@@ -1,4 +1,5 @@
 import { people } from './people.js';
+import { btnCalcChurras } from './calcchurrasco.js';
 export const screen_churrascometro = function () {
     const screenChurras = document.createElement('div');
     screenChurras.classList.add('container-churras');
@@ -6,5 +7,6 @@ export const screen_churrascometro = function () {
     screenChurras.appendChild(people("1", "homem"));
     screenChurras.appendChild(people("2", "mulher"));
     screenChurras.appendChild(people("3", "criança"));
+    screenChurras.appendChild(btnCalcChurras());
     return screenChurras;
 };

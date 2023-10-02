@@ -1,14 +1,20 @@
 import { app } from "../components/main.js";
 import { cadForm } from "../components/cadform.js";
+import { screen_churrascometro as churras } from '../components/churrascometro.js';
+
+
+// Constantes 
+
+export const userLocal = localStorage.getItem("userlocal");
+
+// Funções Exportadas 
 
 export const appstart = function () {
-  // const box_del = document.getElementsByClassName('box') as HTMLCollectionOf<Element>;
   const container = document.getElementById("container") as Element;
+  const cadcontainer = document.getElementById(
+    "cadcontainer"
+  ) as HTMLDivElement;
   if (!userLocal) {
-    const cadcontainer = document.getElementById(
-      "cadcontainer"
-    ) as HTMLDivElement;
-
     const cadbutton_click = document.getElementById(
       "cadbutton"
     ) as HTMLDivElement;
@@ -20,8 +26,9 @@ export const appstart = function () {
   const h2 = document.getElementById("title_splash") as Element;
   if (userLocal) {
     h2.addEventListener("click", () => {
-      console.log(container);
       app.removeChild(container);
+      app.removeChild(cadcontainer);
+      churrascometro();
     });
   }
 };
@@ -73,20 +80,45 @@ export const cadUser = function (
     }
   });
 };
+// TODO: Tela Churrascometro
+export const churrascometro = function () {
+  app.appendChild(churras());
+}
 
-export const userLocal = localStorage.getItem("userlocal");
+export const actionButtonMinusPlus = function(evento: HTMLHeadElement, valor: HTMLHeadElement, action: number){
+  evento.addEventListener('click',()=>{
+    let vl:number = Number(valor.innerHTML);
+    vl += action;
+    if (vl <= 0) {
+        vl = 0;
+    }
+    valor.innerHTML = doubleZeros(vl);
+    // console.log(action);
+  });
+};
+
+
+// Funções Locais 
+
+function doubleZeros(valor:number): string{
+    if (valor < 10) {
+        return "0" + String(valor);
+    }
+    return String(valor);
+}
 
 function removeNode(
   pai: HTMLDivElement,
   filho: HTMLDivElement,
   listener: HTMLHeadElement
-) {
+):void {
   pai.removeChild(filho);
   pai.removeChild(listener);
   pai.removeAttribute("style");
 }
 
-function validateEmail(email: string) {
+
+function validateEmail(email: string): boolean {
   var re: RegExp = /\S+@\S+\.\S+/;
   return re.test(email);
 }

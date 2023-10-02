@@ -1,10 +1,13 @@
 import { app } from "../components/main.js";
 import { cadForm } from "../components/cadform.js";
+import { screen_churrascometro as churras } from '../components/churrascometro.js';
+// Constantes 
+export const userLocal = localStorage.getItem("userlocal");
+// Funções Exportadas 
 export const appstart = function () {
-    // const box_del = document.getElementsByClassName('box') as HTMLCollectionOf<Element>;
     const container = document.getElementById("container");
+    const cadcontainer = document.getElementById("cadcontainer");
     if (!userLocal) {
-        const cadcontainer = document.getElementById("cadcontainer");
         const cadbutton_click = document.getElementById("cadbutton");
         cadbutton_click.addEventListener("click", () => {
             cadcontainer.setAttribute("style", "display: flex;");
@@ -14,8 +17,9 @@ export const appstart = function () {
     const h2 = document.getElementById("title_splash");
     if (userLocal) {
         h2.addEventListener("click", () => {
-            console.log(container);
             app.removeChild(container);
+            app.removeChild(cadcontainer);
+            churrascometro();
         });
     }
 };
@@ -49,7 +53,28 @@ export const cadUser = function (listener, nameInput, emailInput, cityInput, con
         }
     });
 };
-export const userLocal = localStorage.getItem("userlocal");
+// TODO: Tela Churrascometro
+export const churrascometro = function () {
+    app.appendChild(churras());
+};
+export const actionButtonMinusPlus = function (evento, valor, action) {
+    evento.addEventListener('click', () => {
+        let vl = Number(valor.innerHTML);
+        vl += action;
+        if (vl <= 0) {
+            vl = 0;
+        }
+        valor.innerHTML = doubleZeros(vl);
+        // console.log(action);
+    });
+};
+// Funções Locais 
+function doubleZeros(valor) {
+    if (valor < 10) {
+        return "0" + String(valor);
+    }
+    return String(valor);
+}
 function removeNode(pai, filho, listener) {
     pai.removeChild(filho);
     pai.removeChild(listener);

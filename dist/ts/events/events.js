@@ -28,20 +28,26 @@ export const removeFormCad = function (pai, filho, listener) {
         removeNode(pai, filho, listener);
     });
 };
-export const cadUser = function (listener, nameInput, emailInput, cityInput, consentInput, pai, filho, listener1) {
+export const cadUser = function (listener, nameInput, emailInput, cepInput, consentInput, pai, filho, listener1) {
     listener.addEventListener("click", () => {
         const customer = {
             name: nameInput.value,
             email: emailInput.value,
-            city: cityInput.value,
+            cep: cepInput.value,
             offer: consentInput.checked,
+            address: '',
         };
         if (customer.name &&
             customer.email &&
-            customer.city &&
+            customer.cep &&
             validateEmail(customer.email)) {
             //   localStorage.setItem(customer.email, JSON.stringify(customer));
-            localStorage.setItem("userlocal", JSON.stringify(customer));
+            const dadosCEP = API(customer.cep).then((response) => {
+                customer.address = response;
+                localStorage.setItem("userlocal", JSON.stringify(customer));
+            }).catch((error) => {
+                console.log(error);
+            });
             removeNode(pai, filho, listener1);
             window.alert("Usuário Cadastrado com Sucesso!");
             window.location.reload();
@@ -76,6 +82,22 @@ export const actionCalcChurros = function (evento) {
         console.log(man, wom, kid);
     });
 };
+// Função API Consulta CEP
+const API = function (cep) {
+    const endpoint = `https://viacep.com.br/ws/${cep}/json/`;
+    const config = {
+        method: 'GET'
+    };
+    return fetch(endpoint, config).then((response) => response.json());
+};
+// export const APII = async function (CEP: string): Promise<any>{
+//   const endpoint = `https://viacep.com.br/ws/${cep}/json/`;
+//   const config = {
+//     method: 'GET'
+//   }
+//   const response = await fetch(endpoint, config);
+//   return await response.json();
+// };
 // Funções Locais 
 function doubleZeros(valor) {
     if (valor < 10) {

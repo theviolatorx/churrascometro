@@ -2,8 +2,8 @@ import { removeFormCad, cadUser } from "../events/events.js";
 export const cadForm = function () {
     const container = document.getElementById("cadcontainer");
     const buttonClose = document.createElement("div");
-    buttonClose.setAttribute("class", "closebutton");
-    buttonClose.setAttribute("style", "margin-left:auto;margin-top:0px;width:60px;height:60px;z-index:2;");
+    buttonClose.setAttribute("class", "c");
+    buttonClose.setAttribute("style", "margin-left:0;margin-top:0;width:60px;height:60px;z-index:2;");
     //   buttonClose.innerHTML = "X";
     const h4b = document.createElement("h3");
     h4b.innerHTML = "X";
@@ -28,11 +28,11 @@ export const cadForm = function () {
     emailInput.setAttribute("id", "email");
     emailInput.setAttribute("placeholder", "Seu email");
     emailInput.classList.add("input-form-email");
-    const cityInput = document.createElement("input");
-    cityInput.setAttribute("type", "text");
-    cityInput.setAttribute("id", "city");
-    cityInput.setAttribute("placeholder", "Sua Cidade");
-    cityInput.classList.add("input-form-cidade");
+    const cepInput = document.createElement("input");
+    cepInput.setAttribute("type", "text");
+    cepInput.setAttribute("id", "cep");
+    cepInput.setAttribute("placeholder", "Seu CEP");
+    cepInput.classList.add("input-form-cep");
     const divConsentInput = document.createElement("div");
     divConsentInput.setAttribute("id", "consent-input");
     divConsentInput.classList.add("consent-input");
@@ -57,7 +57,7 @@ export const cadForm = function () {
     container_form.appendChild(headerForm);
     formRegister.appendChild(nameInput);
     formRegister.appendChild(emailInput);
-    formRegister.appendChild(cityInput);
+    formRegister.appendChild(cepInput);
     container_form.appendChild(formRegister);
     divConsentInput.appendChild(consentInput);
     divConsentInput.appendChild(labelConsentInput);
@@ -65,6 +65,6 @@ export const cadForm = function () {
     container_form.appendChild(registerInputGroup);
     container.appendChild(container_form);
     removeFormCad(container, container_form, buttonClose);
-    cadUser(h3b, nameInput, emailInput, cityInput, consentInput, container, container_form, buttonClose);
+    cadUser(h3b, nameInput, emailInput, cepInput, consentInput, container, container_form, buttonClose);
     return container;
 };

@@ -2,7 +2,7 @@ import { removeFormCad, cadUser } from "../events/events.js";
 export const cadForm = function () {
     const container = document.getElementById("cadcontainer");
     const buttonClose = document.createElement("div");
-    buttonClose.setAttribute("class", "c");
+    buttonClose.setAttribute("class", "closebutton");
     buttonClose.setAttribute("style", "margin-left:0;margin-top:0;width:60px;height:60px;z-index:2;");
     //   buttonClose.innerHTML = "X";
     const h4b = document.createElement("h3");

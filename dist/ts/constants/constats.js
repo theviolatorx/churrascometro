@@ -1,3 +1,4 @@
+export const userLocal = localStorage.getItem("userlocal");
 export const valueDefaultChurras = {
     meat: {
         man: {

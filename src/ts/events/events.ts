@@ -2,15 +2,10 @@ import { app } from "../components/main.js";
 import { cadForm } from "../components/cadform.js";
 import { screen_churrascometro as churras } from '../components/churrascometro.js';
 import { resul } from './../../../dist/ts/components/resultado';
-import { valueDefaultChurras } from '../constants/constats.js';
+import { valueDefaultChurras, userLocal } from '../constants/constats.js';
 import { doubleZeros, removeNode, API, validateEmail, calcularChurras } from '../functions/functions.js';
 
 
-// Constantes 
-
-export const userLocal = localStorage.getItem("userlocal");
-
-// Funções Exportadas 
 
 export const appstart = function () {
   const container = document.getElementById("container") as Element;

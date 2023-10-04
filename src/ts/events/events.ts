@@ -1,6 +1,9 @@
 import { app } from "../components/main.js";
 import { cadForm } from "../components/cadform.js";
 import { screen_churrascometro as churras } from '../components/churrascometro.js';
+import { resul } from './../../../dist/ts/components/resultado';
+import { valueDefaultChurras } from '../constants/constats.js';
+import { doubleZeros, removeNode, API, validateEmail, calcularChurras } from '../functions/functions.js';
 
 
 // Constantes 
@@ -110,51 +113,8 @@ export const actionCalcChurros = function(evento: HTMLHeadElement){
         const man:number = Number(document.getElementById('qt1h').innerHTML);
         const wom:number = Number(document.getElementById('qt2m').innerHTML);
         const kid:number = Number(document.getElementById('qt3c').innerHTML);
-        console.log(man, wom, kid);
+        calcularChurras(man, wom, kid);
+        
     });
 };
 
-// Função API Consulta CEP
-
-const API = function (cep: string): Promise<any>{
-  const endpoint = `https://viacep.com.br/ws/${cep}/json/`;
-  const config = {
-    method: 'GET'
-  }
-  return fetch(endpoint, config).then((response)=> response.json());
-};
-
-// export const APII = async function (CEP: string): Promise<any>{
-//   const endpoint = `https://viacep.com.br/ws/${cep}/json/`;
-//   const config = {
-//     method: 'GET'
-//   }
-//   const response = await fetch(endpoint, config);
-//   return await response.json();
-// };
-
-
-
-// Funções Locais 
-
-function doubleZeros(valor:number): string{
-    if (valor < 10) {
-        return "0" + String(valor);
-    }
-    return String(valor);
-}
-
-function removeNode(
-  pai: HTMLDivElement,
-  filho: HTMLDivElement,
-  listener: HTMLHeadElement
-):void {
-  pai.removeChild(filho);
-  pai.removeChild(listener);
-  pai.removeAttribute("style");
-}
-
-function validateEmail(email: string): boolean {
-  var re: RegExp = /\S+@\S+\.\S+/;
-  return re.test(email);
-}

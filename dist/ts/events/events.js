@@ -1,6 +1,7 @@
 import { app } from "../components/main.js";
 import { cadForm } from "../components/cadform.js";
 import { screen_churrascometro as churras } from '../components/churrascometro.js';
+import { doubleZeros, removeNode, API, validateEmail, calcularChurras } from '../functions/functions.js';
 // Constantes 
 export const userLocal = localStorage.getItem("userlocal");
 // Funções Exportadas 
@@ -79,38 +80,6 @@ export const actionCalcChurros = function (evento) {
         const man = Number(document.getElementById('qt1h').innerHTML);
         const wom = Number(document.getElementById('qt2m').innerHTML);
         const kid = Number(document.getElementById('qt3c').innerHTML);
-        console.log(man, wom, kid);
+        calcularChurras(man, wom, kid);
     });
 };
-// Função API Consulta CEP
-const API = function (cep) {
-    const endpoint = `https://viacep.com.br/ws/${cep}/json/`;
-    const config = {
-        method: 'GET'
-    };
-    return fetch(endpoint, config).then((response) => response.json());
-};
-// export const APII = async function (CEP: string): Promise<any>{
-//   const endpoint = `https://viacep.com.br/ws/${cep}/json/`;
-//   const config = {
-//     method: 'GET'
-//   }
-//   const response = await fetch(endpoint, config);
-//   return await response.json();
-// };
-// Funções Locais 
-function doubleZeros(valor) {
-    if (valor < 10) {
-        return "0" + String(valor);
-    }
-    return String(valor);
-}
-function removeNode(pai, filho, listener) {
-    pai.removeChild(filho);
-    pai.removeChild(listener);
-    pai.removeAttribute("style");
-}
-function validateEmail(email) {
-    var re = /\S+@\S+\.\S+/;
-    return re.test(email);
-}

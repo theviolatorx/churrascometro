@@ -1,5 +1,6 @@
 import { app } from "./main.js";
-import { appstart, userLocal } from "../events/events.js";
+import { appstart } from "../events/events.js";
+import { userLocal } from "../constants/constats.js";
 
 const splash = function () {
   const cadcontainer = document.createElement("div") as HTMLDivElement;

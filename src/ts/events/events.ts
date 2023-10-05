@@ -1,11 +1,9 @@
 import { app } from "../components/main.js";
 import { cadForm } from "../components/cadform.js";
 import { screen_churrascometro as churras } from '../components/churrascometro.js';
-import { resul } from './../../../dist/ts/components/resultado';
-import { valueDefaultChurras, userLocal } from '../constants/constats.js';
+
+import { userLocal } from '../constants/constats.js';
 import { doubleZeros, removeNode, API, validateEmail, calcularChurras } from '../functions/functions.js';
-
-
 
 export const appstart = function () {
   const container = document.getElementById("container") as Element;
@@ -91,24 +89,28 @@ export const churrascometro = function () {
 }
 
 export const actionButtonMinusPlus = function(evento: HTMLHeadElement, valor: HTMLHeadElement, action: number){
-  evento.addEventListener('click',()=>{
+  evento.addEventListener('click',(e)=>{
     let vl:number = Number(valor.innerHTML);
+    let timeChurras = e.currentTarget.id;
     vl += action;
     if (vl <= 0) {
         vl = 0;
+    }
+    if (timeChurras === '4t' && vl <= 1){
+      vl = 1;
     }
     valor.innerHTML = doubleZeros(vl);
     // console.log(action);
   });
 };
 
-// TODO: Evento Mostrar Resultado
 export const actionCalcChurros = function(evento: HTMLHeadElement){
     evento.addEventListener('click',()=>{
         const man:number = Number(document.getElementById('qt1h').innerHTML);
         const wom:number = Number(document.getElementById('qt2m').innerHTML);
         const kid:number = Number(document.getElementById('qt3c').innerHTML);
-        calcularChurras(man, wom, kid);
+        const tim:number = Number(document.getElementById('qt4t').innerHTML);
+        calcularChurras(man, wom, kid, tim);
         
     });
 };

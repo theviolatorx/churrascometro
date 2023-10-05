@@ -62,22 +62,26 @@ export const churrascometro = function () {
     app.appendChild(churras());
 };
 export const actionButtonMinusPlus = function (evento, valor, action) {
-    evento.addEventListener('click', () => {
+    evento.addEventListener('click', (e) => {
         let vl = Number(valor.innerHTML);
+        let timeChurras = e.currentTarget.id;
         vl += action;
         if (vl <= 0) {
             vl = 0;
+        }
+        if (timeChurras === '4t' && vl <= 1) {
+            vl = 1;
         }
         valor.innerHTML = doubleZeros(vl);
         // console.log(action);
     });
 };
-// TODO: Evento Mostrar Resultado
 export const actionCalcChurros = function (evento) {
     evento.addEventListener('click', () => {
         const man = Number(document.getElementById('qt1h').innerHTML);
         const wom = Number(document.getElementById('qt2m').innerHTML);
         const kid = Number(document.getElementById('qt3c').innerHTML);
-        calcularChurras(man, wom, kid);
+        const tim = Number(document.getElementById('qt4t').innerHTML);
+        calcularChurras(man, wom, kid, tim);
     });
 };

@@ -1,5 +1,5 @@
 import { actionButtonMinusPlus } from '../events/events.js';
-export const people = function (id, tittle, display) {
+export const tempoChurras = function (id, tittle) {
     const people = document.createElement('div');
     people.classList.add('box');
     people.setAttribute('id', id);
@@ -11,7 +11,7 @@ export const people = function (id, tittle, display) {
     // Quantidade
     const quantiPeople = document.createElement('h2');
     people.appendChild(quantiPeople);
-    quantiPeople.innerHTML = display;
+    quantiPeople.innerHTML = '00';
     quantiPeople.setAttribute('style', 'font-size: 3.5em;height: 50px;inset: 20px;margin-top: 80px;');
     quantiPeople.setAttribute('id', 'qt' + id);
     // Botão Subtrair
@@ -28,5 +28,5 @@ export const people = function (id, tittle, display) {
     actionButtonMinusPlus(botaoPlus, quantiPeople, +1);
     people.appendChild(botaoMinus);
     people.appendChild(botaoPlus);
-    return people;
+    return tempoChurras;
 };

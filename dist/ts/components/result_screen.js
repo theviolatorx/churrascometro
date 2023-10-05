@@ -1,5 +1,5 @@
 import { removeFormCad, cadUser } from "../events/events.js";
-export const cadForm = function () {
+export const screenRes = function () {
     const container = document.getElementById("cadcontainer");
     const buttonClose = document.createElement("div");
     buttonClose.setAttribute("class", "closebutton");

@@ -9,7 +9,6 @@ export const btnCalcChurras = function() {
     h3.innerHTML = 'Calcular Churrasco';
     buttonCalcChurras.appendChild(h3);
 
-    // TODO: Botão Mostrar Resultado
     actionCalcChurros(h3);
     
     return buttonCalcChurras;

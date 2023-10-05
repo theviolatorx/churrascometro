@@ -1,5 +1,5 @@
 import { actionButtonMinusPlus } from '../events/events.js';
-export const people = function(id: string, tittle: string) {
+export const people = function(id: string, tittle: string, display: string) {
     const people = document.createElement('div') as HTMLDivElement;
     people.classList.add('box');
     people.setAttribute('id',id);
@@ -13,7 +13,7 @@ export const people = function(id: string, tittle: string) {
     // Quantidade
     const quantiPeople = document.createElement('h2') as HTMLHeadElement;
     people.appendChild(quantiPeople);
-    quantiPeople.innerHTML = '00';
+    quantiPeople.innerHTML = display;
     quantiPeople.setAttribute('style','font-size: 3.5em;height: 50px;inset: 20px;margin-top: 80px;');
     quantiPeople.setAttribute('id','qt'+id);
     

@@ -1,13 +1,16 @@
 import { app } from "../components/main.js";
 import { cadForm } from "../components/cadform.js";
-import { screen_churrascometro as churras } from '../components/churrascometro.js';
+import { screen_churrascometro as churras } from "../components/churrascometro.js";
 
-
-// Constantes 
-
-export const userLocal = localStorage.getItem("userlocal");
-
-// Funções Exportadas 
+import { userLocal } from "../constants/constats.js";
+import {
+  doubleZeros,
+  removeNode,
+  API,
+  validateEmail,
+  calcularChurras,
+  validateCep,
+} from "../functions/functions.js";
 
 export const appstart = function () {
   const container = document.getElementById("container") as Element;
@@ -47,7 +50,7 @@ export const cadUser = function (
   listener: HTMLHeadElement,
   nameInput: HTMLInputElement,
   emailInput: HTMLInputElement,
-  cityInput: HTMLInputElement,
+  cepInput: HTMLInputElement,
   consentInput: HTMLInputElement,
   pai: HTMLDivElement,
   filho: HTMLDivElement,
@@ -57,77 +60,80 @@ export const cadUser = function (
     const customer = {
       name: nameInput.value,
       email: emailInput.value,
-      city: cityInput.value,
+      cep: cepInput.value,
       offer: consentInput.checked,
+      address: "",
     };
+
+    console.log(customer.name);
+    console.log(customer.email);
+    console.log(customer.cep);
+    console.log("valida email:", validateEmail(customer.email));
+    console.log("valida cep:", validateCep(customer.cep)); 
+    console.log("tamanho cep:", customer.cep.length === 8);
+
     if (
       customer.name &&
       customer.email &&
-      customer.city &&
-      validateEmail(customer.email)
+      customer.cep &&
+      validateEmail(customer.email) &&
+      validateCep(customer.cep) && 
+      customer.cep.length === 8
     ) {
       //   localStorage.setItem(customer.email, JSON.stringify(customer));
-      localStorage.setItem("userlocal", JSON.stringify(customer));
-      removeNode(pai, filho, listener1);
-      window.alert("Usuário Cadastrado com Sucesso!");
-      window.location.reload();
-    //   return true;
+      const dadosCEP = API(customer.cep)
+        .then((response) => {
+          customer.address = response;
+          if (!response.erro) {
+            localStorage.setItem("userlocal", JSON.stringify(customer));
+            removeNode(pai, filho, listener1);
+            window.alert("Usuário Cadastrado com Sucesso!");
+            window.location.reload();
+          } else {
+            window.alert("CEP não encontrado!");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     } else {
       window.alert(
-        "Verifique se preencheu todos os campos e se o email esta correto.\nExemplo email: exemplo@exemplo.dominio"
+        "Verifique se preencheu todos os campos e se o email esta correto.\nExemplo email: exemplo@exemplo.dominio\nExemplo CEP: 11750000 (Somente 8 dígitos)"
       );
-    //   return false;
-    }
+    };
   });
 };
 
 export const churrascometro = function () {
   app.appendChild(churras());
-}
+};
 
-export const actionButtonMinusPlus = function(evento: HTMLHeadElement, valor: HTMLHeadElement, action: number){
-  evento.addEventListener('click',()=>{
-    let vl:number = Number(valor.innerHTML);
+export const actionButtonMinusPlus = function (
+  evento: HTMLHeadElement,
+  valor: HTMLHeadElement,
+  action: number
+) {
+  evento.addEventListener("click", (e) => {
+    let vl: number = Number(valor.innerHTML);
+    let timeChurras = e.currentTarget.id;
     vl += action;
     if (vl <= 0) {
-        vl = 0;
+      vl = 0;
+    }
+    if (timeChurras === "4t" && vl <= 1) {
+      vl = 1;
     }
     valor.innerHTML = doubleZeros(vl);
     // console.log(action);
   });
 };
 
-// TODO: Evento Mostrar Resultado
-export const actionCalcChurros = function(evento: HTMLHeadElement){
-    evento.addEventListener('click',()=>{
-        const man:number = Number(document.getElementById('qt1h').innerHTML);
-        const wom:number = Number(document.getElementById('qt2m').innerHTML);
-        const kid:number = Number(document.getElementById('qt3c').innerHTML);
-        console.log(man, wom, kid);
-    });
+export const actionCalcChurros = function (evento: HTMLHeadElement) {
+  evento.addEventListener("click", () => {
+    const man: number = Number(document.getElementById("qt1h").innerHTML);
+    const wom: number = Number(document.getElementById("qt2m").innerHTML);
+    const kid: number = Number(document.getElementById("qt3c").innerHTML);
+    const tim: number = Number(document.getElementById("qt4t").innerHTML);
+    calcularChurras(man, wom, kid, tim);
+  });
 };
-
-
-// Funções Locais 
-
-function doubleZeros(valor:number): string{
-    if (valor < 10) {
-        return "0" + String(valor);
-    }
-    return String(valor);
-}
-
-function removeNode(
-  pai: HTMLDivElement,
-  filho: HTMLDivElement,
-  listener: HTMLHeadElement
-):void {
-  pai.removeChild(filho);
-  pai.removeChild(listener);
-  pai.removeAttribute("style");
-}
-
-function validateEmail(email: string): boolean {
-  var re: RegExp = /\S+@\S+\.\S+/;
-  return re.test(email);
-}

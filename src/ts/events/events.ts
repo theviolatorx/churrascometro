@@ -69,7 +69,7 @@ export const cadUser = function (
     console.log(customer.email);
     console.log(customer.cep);
     console.log("valida email:", validateEmail(customer.email));
-    console.log("valida cep:", validateCep(customer.cep)); // TODO: Arrumar o problema do CEP que é string
+    console.log("valida cep:", validateCep(customer.cep)); 
     console.log("tamanho cep:", customer.cep.length === 8);
 
     if (
@@ -77,7 +77,7 @@ export const cadUser = function (
       customer.email &&
       customer.cep &&
       validateEmail(customer.email) &&
-      validateCep(customer.cep) && // TODO: Arrumar o problema do CEP que é string
+      validateCep(customer.cep) && 
       customer.cep.length === 8
     ) {
       //   localStorage.setItem(customer.email, JSON.stringify(customer));

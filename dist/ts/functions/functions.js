@@ -7,6 +7,20 @@ export function doubleZeros(valor) {
     }
     return String(valor);
 }
+export function tipoProduto(index, qtItem) {
+    if (index === 12 || index === 13 || index === 15) {
+        return "pct";
+    }
+    if (index >= 16 && index <= 18) {
+        return "lts";
+    }
+    if (qtItem < 1) {
+        return "grs";
+    }
+    else if (qtItem >= 1) {
+        return "kgs";
+    }
+}
 export function removeNode(pai, filho, listener) {
     pai.removeChild(filho);
     pai.removeChild(listener);
@@ -19,14 +33,14 @@ export function validateEmail(email) {
 }
 export function validateCep(cep) {
     cep = Trim(cep);
-    // var re: RegExp = /d{8}/; 
+    // var re: RegExp = /d{8}/;
     var re = /^[0-9]{8}$/;
     return re.test(cep);
 }
 // Função para retirar os espaços em branco do início e do fim da string.
 function Trim(strTexto) {
     // Substitúi os espaços vazios no inicio e no fim da string por vazio.
-    return strTexto.replace(/^\s+|\s+$/g, '');
+    return strTexto.replace(/^\s+|\s+$/g, "");
 }
 // Função API Consulta CEP
 export const API = function (cep) {
@@ -117,24 +131,24 @@ export function calcularChurras(man, wom, kid, tim, atv) {
         (man === 0 ? 1 : man) *
         (wom === 0 ? 1 : wom);
     const resultado = {
-        Picanha: totMeatPicanha,
-        'Contra File': totMeatContra,
-        Fraudinha: totMeatFralda,
-        'Coxinha de Frango': totChickenDrum,
-        'Caracão de Frango': totChickenCora,
-        'Sassami de Frango': totChickenSass,
-        'Linguiça Apimentada': totSausageApim,
-        'Linguiça Normal': totSausageNorm,
-        'Linguiça Cuiabana': totSausageCuia,
-        'Costelinha de Porco': totPorkCost,
-        'Barriga de Porco': totPorkBarr,
-        'Bisteca da Copa Lombo': totPorkCopa,
-        'Pao De Alho': totBread,
-        'Carvão': totCoal,
-        'Sal Grosso': totSalt,
-        'Gelo': totIce,
+        Picanha: totMeatPicanha.toFixed(3),
+        "Contra File": totMeatContra.toFixed(3),
+        Fraudinha: totMeatFralda.toFixed(3),
+        "Coxinha de Frango": totChickenDrum.toFixed(3),
+        "Coracão de Frango": totChickenCora.toFixed(3),
+        "Sassami de Frango": totChickenSass.toFixed(3),
+        "Linguiça Apimentada": totSausageApim.toFixed(3),
+        "Linguiça Normal": totSausageNorm.toFixed(3),
+        "Linguiça Cuiabana": totSausageCuia.toFixed(3),
+        "Costelinha de Porco": totPorkCost.toFixed(3),
+        "Barriga de Porco": totPorkBarr.toFixed(3),
+        "Bisteca da Copa Lombo": totPorkCopa.toFixed(3),
+        "Pao De Alho": totBread,
+        Carvão: totCoal,
+        "Sal Grosso": totSalt,
+        Gelo: totIce,
         Refrigerante: totRefri,
-        'Água': totWather,
+        Água: totWather,
         Cerveja: totBeer,
     };
     result(resultado);

@@ -1,5 +1,6 @@
 import { app } from "./main.js";
 import { removeFormCad } from "../events/events.js";
+import { tipoProduto } from "../functions/functions.js";
 // TODO: Mostrar Resultado
 export const result = function (resultado) {
     const screen_people = document.getElementById("container");
@@ -15,11 +16,15 @@ export const result = function (resultado) {
     const headerResul = document.createElement("h3");
     headerResul.setAttribute("style", "justify-content: none;align-items: none;");
     //   headerResul.textContent = 'RESULTADO<br>Testando!';
-    headerResul.innerHTML = "RESULTADO<br><br>";
+    headerResul.innerHTML = "LISTA DE COMPRAS<br><br>";
     const itens = Object.keys(resultado);
+    console.log(resultado);
+    let index = 0;
+    let typeProd;
     itens.forEach((item) => {
-        console.log(item, resultado[item]);
-        headerResul.innerHTML += `${item}... ${resultado[item]} ` + (resultado[item] < 1 ? 'gr' : 'kg') + `<br>`; //TODO: Resolver problema dos tipos Litros e Kilos
+        typeProd = tipoProduto(index, resultado[item]);
+        headerResul.innerHTML += `${item}... ${resultado[item]} ${typeProd} <br>`; // TODO: Precisa ligar com as quantidades
+        index++;
     });
     container_result.appendChild(headerResul);
     screen_result.appendChild(container_result);

@@ -2,7 +2,7 @@ import { app } from "../components/main.js";
 import { cadForm } from "../components/cadform.js";
 import { screen_churrascometro as churras } from '../components/churrascometro.js';
 import { userLocal } from '../constants/constats.js';
-import { doubleZeros, removeNode, API, validateEmail, calcularChurras } from '../functions/functions.js';
+import { doubleZeros, removeNode, API, validateEmail, calcularChurras, validateCep } from '../functions/functions.js';
 export const appstart = function () {
     const container = document.getElementById("container");
     const cadcontainer = document.getElementById("cadcontainer");
@@ -39,7 +39,9 @@ export const cadUser = function (listener, nameInput, emailInput, cepInput, cons
         if (customer.name &&
             customer.email &&
             customer.cep &&
-            validateEmail(customer.email)) {
+            validateEmail(customer.email) &&
+            validateCep(Number(customer.cep)) && // TODO: Arrumar o problema do CEP que é string
+            (customer.cep.length === 8)) {
             //   localStorage.setItem(customer.email, JSON.stringify(customer));
             const dadosCEP = API(customer.cep).then((response) => {
                 customer.address = response;
@@ -53,7 +55,7 @@ export const cadUser = function (listener, nameInput, emailInput, cepInput, cons
             //   return true;
         }
         else {
-            window.alert("Verifique se preencheu todos os campos e se o email esta correto.\nExemplo email: exemplo@exemplo.dominio");
+            window.alert("Verifique se preencheu todos os campos e se o email esta correto.\nExemplo email: exemplo@exemplo.dominio\nExemplo CEP: 11750000 (Somente 8 dígitos)");
             //   return false;
         }
     });

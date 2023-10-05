@@ -16,6 +16,10 @@ export function validateEmail(email) {
     var re = /\S+@\S+\.\S+/;
     return re.test(email);
 }
+export function validateCep(cep) {
+    var re = /d{8}/;
+    return re.test(cep);
+}
 // Função API Consulta CEP
 export const API = function (cep) {
     const endpoint = `https://viacep.com.br/ws/${cep}/json/`;
@@ -106,23 +110,23 @@ export function calcularChurras(man, wom, kid, tim, atv) {
         (wom === 0 ? 1 : wom);
     const resultado = {
         Picanha: totMeatPicanha,
-        ContraFile: totMeatContra,
+        'Contra File': totMeatContra,
         Fraudinha: totMeatFralda,
-        Drummet: totChickenDrum,
-        Caracao: totChickenCora,
-        Sassami: totChickenSass,
-        Apimentada: totSausageApim,
-        Normal: totSausageNorm,
-        Cuiabana: totSausageCuia,
-        Costelinha: totPorkCost,
-        Barriga: totPorkBarr,
-        CopaLombo: totPorkCopa,
-        PaoDeAolho: totBread,
-        Carvao: totCoal,
-        SalGrosso: totSalt,
-        Gelo: totIce,
+        'Coxinha de Frango': totChickenDrum,
+        'Caracão de Frango': totChickenCora,
+        'Sassami de Frango': totChickenSass,
+        'Linguiça Apimentada': totSausageApim,
+        'Linguiça Normal': totSausageNorm,
+        'Linguiça Cuiabana': totSausageCuia,
+        'Costelinha de Porco': totPorkCost,
+        'Barriga de Porco': totPorkBarr,
+        'Bisteca da Copa Lombo': totPorkCopa,
+        'Pao De Alho': totBread,
+        'Carvão': totCoal,
+        'Sal Grosso': totSalt,
+        'Gelo': totIce,
         Refrigerante: totRefri,
-        Agua: totWather,
+        'Água': totWather,
         Cerveja: totBeer,
     };
     result(resultado);

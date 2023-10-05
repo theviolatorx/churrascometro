@@ -10,8 +10,8 @@ export function doubleZeros(valor: number): string {
 }
 
 export function removeNode(
-  pai: HTMLDivElement,
-  filho: HTMLDivElement,
+  pai: HTMLDivElement ,
+  filho: HTMLDivElement ,
   listener: HTMLHeadElement
 ): void {
   pai.removeChild(filho);
@@ -22,6 +22,11 @@ export function removeNode(
 export function validateEmail(email: string): boolean {
   var re: RegExp = /\S+@\S+\.\S+/;
   return re.test(email);
+}
+
+export function validateCep(cep: number): Boolean {
+  var re: RegExp = /d{8}/;
+  return re.test(cep);
 }
 
 // Função API Consulta CEP
@@ -153,23 +158,23 @@ export function calcularChurras(
 
   const resultado = {
     Picanha: totMeatPicanha,
-    ContraFile: totMeatContra,
+    'Contra File': totMeatContra,
     Fraudinha: totMeatFralda,
-    Drummet: totChickenDrum,
-    Caracao: totChickenCora,
-    Sassami: totChickenSass,
-    Apimentada: totSausageApim,
-    Normal: totSausageNorm,
-    Cuiabana: totSausageCuia,
-    Costelinha: totPorkCost,
-    Barriga: totPorkBarr,
-    CopaLombo: totPorkCopa,
-    PaoDeAolho: totBread,
-    Carvao: totCoal,
-    SalGrosso: totSalt,
-    Gelo: totIce,
+    'Coxinha de Frango': totChickenDrum,
+    'Caracão de Frango': totChickenCora,
+    'Sassami de Frango': totChickenSass,
+    'Linguiça Apimentada': totSausageApim,
+    'Linguiça Normal': totSausageNorm,
+    'Linguiça Cuiabana': totSausageCuia,
+    'Costelinha de Porco': totPorkCost,
+    'Barriga de Porco': totPorkBarr,
+    'Bisteca da Copa Lombo': totPorkCopa,
+    'Pao De Alho': totBread,
+    'Carvão': totCoal,
+    'Sal Grosso': totSalt,
+    'Gelo': totIce,
     Refrigerante: totRefri,
-    Agua: totWather,
+    'Água': totWather,
     Cerveja: totBeer,
   };
 

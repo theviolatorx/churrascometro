@@ -20,13 +20,23 @@ export function removeNode(
 }
 
 export function validateEmail(email: string): boolean {
+  email = Trim(email);
   var re: RegExp = /\S+@\S+\.\S+/;
   return re.test(email);
 }
 
-export function validateCep(cep: number): Boolean {
-  var re: RegExp = /d{8}/;
+export function validateCep(cep: string): Boolean {
+  cep = Trim(cep);
+  // var re: RegExp = /d{8}/; 
+  var re: RegExp = /^[0-9]{8}$/;
   return re.test(cep);
+}
+
+// Função para retirar os espaços em branco do início e do fim da string.
+function Trim(strTexto)
+{
+    // Substitúi os espaços vazios no inicio e no fim da string por vazio.
+    return strTexto.replace(/^\s+|\s+$/g, '');
 }
 
 // Função API Consulta CEP
@@ -180,3 +190,4 @@ export function calcularChurras(
 
   result(resultado);
 }
+

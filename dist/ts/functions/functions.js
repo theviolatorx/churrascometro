@@ -13,12 +13,20 @@ export function removeNode(pai, filho, listener) {
     pai.removeAttribute("style");
 }
 export function validateEmail(email) {
+    email = Trim(email);
     var re = /\S+@\S+\.\S+/;
     return re.test(email);
 }
 export function validateCep(cep) {
-    var re = /d{8}/;
+    cep = Trim(cep);
+    // var re: RegExp = /d{8}/; 
+    var re = /^[0-9]{8}$/;
     return re.test(cep);
+}
+// Função para retirar os espaços em branco do início e do fim da string.
+function Trim(strTexto) {
+    // Substitúi os espaços vazios no inicio e no fim da string por vazio.
+    return strTexto.replace(/^\s+|\s+$/g, '');
 }
 // Função API Consulta CEP
 export const API = function (cep) {

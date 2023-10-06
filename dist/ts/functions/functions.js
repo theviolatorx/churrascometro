@@ -8,11 +8,26 @@ export function doubleZeros(valor) {
     return String(valor);
 }
 export function tipoProduto(index, qtItem) {
-    if (index === 12 || index === 13 || index === 15) {
+    if (index === 12) { // Pão de Alho
         return "pct";
     }
-    if (index >= 16 && index <= 18) {
-        return "lts";
+    if (index === 13) { // Carvão
+        return "pct de 2 kgs";
+    }
+    if (index === 14) { // Sal Grosso
+        return "pct de 500 grs";
+    }
+    if (index === 15) { // Gelo
+        return "pct de 5 kgs";
+    }
+    if (index === 16) {
+        return "garrafa(s) de 2 lts";
+    }
+    if (index === 17) {
+        return "garrafa(s) de 1 lts";
+    }
+    if (index === 18) {
+        return "garrafas de 600 mls";
     }
     if (qtItem < 1) {
         return "grs";
@@ -101,49 +116,84 @@ export function calcularChurras(man, wom, kid, tim, atv) {
         (wom === 0 ? 1 : wom) +
         valueDefaultChurras.bread.kid.paodeaolho * kid) /
         5;
-    const totCoal = valueDefaultChurras.coal *
+    let totCoal = valueDefaultChurras.coal *
         (man === 0 && wom === 0 && kid === 0 ? 0 : 1) *
         (man === 0 ? 1 : man) *
         (wom === 0 ? 1 : wom) *
         (kid === 0 ? 1 : kid);
-    const totSalt = valueDefaultChurras.salt *
+    if (totCoal > 1) {
+        if (totCoal % 2 === 1) {
+            totCoal = (totCoal + 1) / 2;
+        }
+        else {
+            totCoal = totCoal / 2;
+        }
+    }
+    let totSalt = valueDefaultChurras.salt *
         (man === 0 && wom === 0 && kid === 0 ? 0 : 1) *
         (man === 0 ? 1 : man) *
         (wom === 0 ? 1 : wom) *
         (kid === 0 ? 1 : kid);
-    const totIce = valueDefaultChurras.ice *
+    if (totSalt < 0.500) {
+        totSalt = 1;
+    }
+    else {
+        totSalt = Math.round(totSalt / 0.500);
+    }
+    let totIce = valueDefaultChurras.ice *
         (man === 0 && wom === 0 && kid === 0 ? 0 : 1) *
         (man === 0 ? 1 : man) *
         (wom === 0 ? 1 : wom) *
         (kid === 0 ? 1 : kid);
-    const totRefri = valueDefaultChurras.refri *
+    totIce = totIce / 5;
+    if (totIce <= 1) {
+        totIce = 1;
+    }
+    else {
+        totIce = Math.round(totIce);
+    }
+    let totRefri = valueDefaultChurras.refri *
         (man === 0 && wom === 0 && kid === 0 ? 0 : 1) *
         (man === 0 ? 1 : man) *
         (wom === 0 ? 1 : wom) *
         (kid === 0 ? 1 : kid);
-    const totWather = valueDefaultChurras.wather *
+    totRefri = totRefri / 5;
+    if (totRefri <= 1) {
+        totRefri = 1;
+    }
+    else {
+        totRefri = Math.round(totRefri);
+    }
+    let totWather = valueDefaultChurras.wather *
         (man === 0 && wom === 0 && kid === 0 ? 0 : 1) *
         (man === 0 ? 1 : man) *
         (wom === 0 ? 1 : wom) *
         (kid === 0 ? 1 : kid);
-    const totBeer = valueDefaultChurras.beer *
+    totWather = totWather / 5;
+    if (totWather <= 1) {
+        totWather = 1;
+    }
+    else {
+        totWather = Math.round(totWather);
+    }
+    const totBeer = Math.round(valueDefaultChurras.beer *
         (man === 0 && wom === 0 ? 0 : 1) *
         (man === 0 ? 1 : man) *
-        (wom === 0 ? 1 : wom);
+        (wom === 0 ? 1 : wom));
     const resultado = {
-        Picanha: totMeatPicanha.toFixed(3),
-        "Contra File": totMeatContra.toFixed(3),
-        Fraudinha: totMeatFralda.toFixed(3),
-        "Coxinha de Frango": totChickenDrum.toFixed(3),
-        "Coracão de Frango": totChickenCora.toFixed(3),
-        "Sassami de Frango": totChickenSass.toFixed(3),
-        "Linguiça Apimentada": totSausageApim.toFixed(3),
-        "Linguiça Normal": totSausageNorm.toFixed(3),
-        "Linguiça Cuiabana": totSausageCuia.toFixed(3),
-        "Costelinha de Porco": totPorkCost.toFixed(3),
-        "Barriga de Porco": totPorkBarr.toFixed(3),
-        "Bisteca da Copa Lombo": totPorkCopa.toFixed(3),
-        "Pao De Alho": totBread,
+        Picanha: totMeatPicanha.toFixed(1),
+        "Contra File": totMeatContra.toFixed(1),
+        Fraudinha: totMeatFralda.toFixed(1),
+        "Coxinha de Frango": totChickenDrum.toFixed(1),
+        "Coracão de Frango": totChickenCora.toFixed(1),
+        "Sassami de Frango": totChickenSass.toFixed(1),
+        "Linguiça Apimentada": totSausageApim.toFixed(1),
+        "Linguiça Normal": totSausageNorm.toFixed(1),
+        "Linguiça Cuiabana": totSausageCuia.toFixed(1),
+        "Costelinha de Porco": totPorkCost.toFixed(1),
+        "Barriga de Porco": totPorkBarr.toFixed(1),
+        "Bisteca da Copa Lombo": totPorkCopa.toFixed(1),
+        "Pao De Alho": totBread < 1 ? 1 : Math.round(totBread),
         Carvão: totCoal,
         "Sal Grosso": totSalt,
         Gelo: totIce,

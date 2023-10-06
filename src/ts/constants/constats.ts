@@ -77,10 +77,10 @@ export const valueDefaultChurras = {
       paodeaolho: 1, // unidade
     },
   },
-  coal: 1.5,
-  salt: 0.04,
+  coal: 1, // Pacotes de 2 Kilogs
+  salt: 0.04, // Pacotes de 0,500 gramas
   ice: 0.5,
-  refri: 0.4,
-  wather: 0.2,
-  beer: 1.8,
+  refri: 1,
+  wather: 1,
+  beer: 3,
 };

@@ -1,4 +1,6 @@
-# churrascometro-js
+# CHURRASCOMETRO -
+### ADA TECH - Curso do Santander 2023
+### Módulo - Javascript Vanilla
 # Enunciado do projeto prático
 
 ## Objetivo
@@ -75,3 +77,7 @@ O objetivo desta atividade é desenvolver uma calculadora chamada "Churrascômet
     1. Responsividade;
     2. Posicionamento de elementos (Botão fechas fora de posição);
     3. Refatorar e melhorar as funções e eventos;
+
+## Desenvolvedor
+
+[Clóvis Garcia](https://www.github/theviolatorx)

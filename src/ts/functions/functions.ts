@@ -1,5 +1,6 @@
 import { valueDefaultChurras } from "../constants/constats.js";
 import { result } from "../components/resultado.js";
+
 // Funções Locais
 
 export function doubleZeros(valor: number): string {
@@ -247,4 +248,4 @@ export function calcularChurras(
   };
 
   result(resultado);
-}
+};

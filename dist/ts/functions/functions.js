@@ -203,3 +203,4 @@ export function calcularChurras(man, wom, kid, tim, atv) {
     };
     result(resultado);
 }
+;

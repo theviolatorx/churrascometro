@@ -37,7 +37,7 @@ export const appstart = function () {
 };
 
 export const removeFormCad = function (
-  pai: HTMLDivElement,
+  pai: HTMLDivElement | Element,
   filho: HTMLDivElement,
   listener: HTMLHeadElement
 ) {

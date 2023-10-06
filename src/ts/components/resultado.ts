@@ -1,8 +1,8 @@
 import { app } from "./main.js";
 import { removeFormCad } from "../events/events.js";
+
 import { tipoProduto } from "../functions/functions.js";
 
-// TODO: Mostrar Resultado
 export const result = function (resultado: Object) {
   const screen_people = document.getElementById("container") as HTMLDivElement;
   screen_people.setAttribute("style", "display: none;");
@@ -25,18 +25,15 @@ export const result = function (resultado: Object) {
 
   const headerResul = document.createElement("h3") as HTMLParagraphElement;
   headerResul.setAttribute("style", "justify-content: none;align-items: none;");
-  //   headerResul.textContent = 'RESULTADO<br>Testando!';
 
   headerResul.innerHTML = "LISTA DE COMPRAS<br><br>";
 
   const itens = Object.keys(resultado);
-  console.log(resultado);
   let index:number = 0;
   let typeProd: string;
   itens.forEach((item) => {
     typeProd = tipoProduto(index, resultado[item] );
-    headerResul.innerHTML += `${item}... ${resultado[item]} ${typeProd} <br>`; // TODO: Precisa ligar com as quantidades
-    console.log(index,item,resultado[item],typeProd);
+    headerResul.innerHTML += `${item}... ${resultado[item]} ${typeProd} <br>`; 
     index++;
   });
  
@@ -45,5 +42,7 @@ export const result = function (resultado: Object) {
 
   screen_result.appendChild(container_result);
   app.appendChild(screen_result);
-  removeFormCad(screen_people , screen_result, container_result);
+
+  removeFormCad(app, screen_result, container_result);
+  // screen_people.removeAttribute('style');
 };

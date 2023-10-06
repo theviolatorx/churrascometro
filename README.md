@@ -55,3 +55,15 @@ O objetivo desta atividade é desenvolver uma calculadora chamada "Churrascômet
     4. O código deve fazer uso de eventos ligados aos elementos da página;
     5. O código deve fazer uso de armazenamento no browser (Web Storage API);
     6. O código deve fazer uso de chamadas assíncronas e seus derivados.
+
+## Como usar (produção)
+    1. Baixe a pasta dist em um servidor Web;
+    2. Acesse através da URL.
+
+## Como usar (Desenvolvimento)
+    1. Instale o typescript;
+    2. Clone o repositório;
+    3. Edite no seu editor de preferênci;
+    3. Execute o comando tsc para criar o diretório de distribuição;
+
+    

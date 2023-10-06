@@ -65,5 +65,3 @@ O objetivo desta atividade é desenvolver uma calculadora chamada "Churrascômet
     2. Clone o repositório;
     3. Edite no seu editor de preferênci;
     3. Execute o comando tsc para criar o diretório de distribuição;
-
-    

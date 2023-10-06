@@ -76,10 +76,10 @@ export const valueDefaultChurras = {
             paodeaolho: 1, // unidade
         },
     },
-    coal: 1.5,
+    coal: 1,
     salt: 0.04,
     ice: 0.5,
-    refri: 0.4,
-    wather: 0.2,
-    beer: 1.8,
+    refri: 1,
+    wather: 1,
+    beer: 3,
 };

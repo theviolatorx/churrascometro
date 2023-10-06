@@ -20,7 +20,7 @@ export const result = function (resultado: Object) {
   container_result.setAttribute("id", "cadbutton");
   container_result.setAttribute(
     "style",
-    "width: 400px;height: 530px;margin: 0 auto;margin-top: -50px;justify-content:none;"
+    "width: 500px;height: 530px;margin: 0 auto;margin-top: -50px;justify-content:none;"
   );
 
   const headerResul = document.createElement("h3") as HTMLParagraphElement;
@@ -36,6 +36,7 @@ export const result = function (resultado: Object) {
   itens.forEach((item) => {
     typeProd = tipoProduto(index, resultado[item] );
     headerResul.innerHTML += `${item}... ${resultado[item]} ${typeProd} <br>`; // TODO: Precisa ligar com as quantidades
+    console.log(index,item,resultado[item],typeProd);
     index++;
   });
  

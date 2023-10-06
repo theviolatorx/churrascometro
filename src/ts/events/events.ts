@@ -37,11 +37,23 @@ export const appstart = function () {
 };
 
 export const removeFormCad = function (
-  pai: HTMLDivElement,
+  pai: HTMLDivElement | Element,
   filho: HTMLDivElement,
   listener: HTMLHeadElement
 ) {
   listener.addEventListener("click", () => {
+    removeNode(pai, filho, listener);
+  });
+};
+
+export const removeScreenResult = function (
+  pai: HTMLDivElement | Element,
+  filho: HTMLDivElement,
+  listener: HTMLHeadElement,
+  screen_people: HTMLDivElement,
+) {
+  listener.addEventListener("click", () => {
+    screen_people.removeAttribute('style');
     removeNode(pai, filho, listener);
   });
 };

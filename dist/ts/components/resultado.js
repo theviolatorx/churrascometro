@@ -1,7 +1,7 @@
 import { app } from "./main.js";
-import { removeFormCad } from "../events/events.js";
+import { removeScreenResult } from "../events/events.js";
 import { tipoProduto } from "../functions/functions.js";
-// TODO: Mostrar Resultado
+//TODO: Fix: Resolver o problema de fechar a janela de Resultdo
 export const result = function (resultado) {
     const screen_people = document.getElementById("container");
     screen_people.setAttribute("style", "display: none;");
@@ -15,20 +15,18 @@ export const result = function (resultado) {
     container_result.setAttribute("style", "width: 500px;height: 530px;margin: 0 auto;margin-top: -50px;justify-content:none;");
     const headerResul = document.createElement("h3");
     headerResul.setAttribute("style", "justify-content: none;align-items: none;");
-    //   headerResul.textContent = 'RESULTADO<br>Testando!';
     headerResul.innerHTML = "LISTA DE COMPRAS<br><br>";
     const itens = Object.keys(resultado);
-    console.log(resultado);
     let index = 0;
     let typeProd;
     itens.forEach((item) => {
         typeProd = tipoProduto(index, resultado[item]);
-        headerResul.innerHTML += `${item}... ${resultado[item]} ${typeProd} <br>`; // TODO: Precisa ligar com as quantidades
-        console.log(index, item, resultado[item], typeProd);
+        headerResul.innerHTML += `${item}... ${resultado[item]} ${typeProd} <br>`;
         index++;
     });
     container_result.appendChild(headerResul);
     screen_result.appendChild(container_result);
     app.appendChild(screen_result);
-    removeFormCad(screen_people, screen_result, container_result);
+    removeScreenResult(app, screen_result, container_result, screen_people);
+    // screen_people.removeAttribute('style');
 };

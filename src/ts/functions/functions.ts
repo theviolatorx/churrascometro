@@ -146,13 +146,18 @@ export function calcularChurras(
   totPorkBarr += valueDefaultChurras.pork.kid.barriga * kid * 1 * tim;
   totPorkCopa += valueDefaultChurras.pork.kid.copalombo * kid * 1 * tim;
 
-  const totBread: number =
+  let totBread: number =
     (valueDefaultChurras.bread.man.paodeaolho *
-      (man === 0 && wom === 0 && kid === 0 ? 0 : 1) *
+      (man === 0 && wom === 0 ? 0 : 1) *
       (man === 0 ? 1 : man) *
       (wom === 0 ? 1 : wom) +
       valueDefaultChurras.bread.kid.paodeaolho * kid) /
     5;
+    if (totBread > 0 && totBread <= 1){
+        totBread = 1
+    }  else {
+      Math.round(totBread);
+    };
 
   let totCoal: number =
     valueDefaultChurras.coal *
@@ -174,7 +179,7 @@ export function calcularChurras(
     (man === 0 ? 1 : man) *
     (wom === 0 ? 1 : wom) *
     (kid === 0 ? 1 : kid);
-  if (totSalt < 0.500) {
+  if (totSalt > 0 && totSalt <= 0.500) {
     totSalt = 1;
   } else {
     totSalt = Math.round(totSalt / 0.500);
@@ -187,7 +192,7 @@ export function calcularChurras(
     (wom === 0 ? 1 : wom) *
     (kid === 0 ? 1 : kid);
     totIce = totIce / 5;
-    if (totIce <= 1 ){
+    if (totIce > 0 && totIce <= 1 ){
       totIce = 1;
     } else {
       totIce = Math.round(totIce);
@@ -200,7 +205,7 @@ export function calcularChurras(
     (wom === 0 ? 1 : wom) *
     (kid === 0 ? 1 : kid);
     totRefri = totRefri / 5;
-    if (totRefri <= 1) {
+    if (totRefri > 0 && totRefri <= 1) {
       totRefri = 1;
     } else {
       totRefri = Math.round(totRefri);
@@ -213,7 +218,7 @@ export function calcularChurras(
     (wom === 0 ? 1 : wom) *
     (kid === 0 ? 1 : kid);
     totWather = totWather / 5;
-    if (totWather <= 1) {
+    if (totWather > 0 && totWather <= 1) {
       totWather = 1;
     } else {
       totWather = Math.round(totWather);
@@ -238,7 +243,7 @@ export function calcularChurras(
     "Costelinha de Porco": totPorkCost.toFixed(1),
     "Barriga de Porco": totPorkBarr.toFixed(1),
     "Bisteca da Copa Lombo": totPorkCopa.toFixed(1),
-    "Pao De Alho": totBread < 1 ? 1 : Math.round(totBread),
+    "Pao De Alho": totBread,
     Carvão: totCoal,
     "Sal Grosso": totSalt,
     Gelo: totIce,

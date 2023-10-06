@@ -46,6 +46,18 @@ export const removeFormCad = function (
   });
 };
 
+export const removeScreenResult = function (
+  pai: HTMLDivElement | Element,
+  filho: HTMLDivElement,
+  listener: HTMLHeadElement,
+  screen_people: HTMLDivElement,
+) {
+  listener.addEventListener("click", () => {
+    screen_people.removeAttribute('style');
+    removeNode(pai, filho, listener);
+  });
+};
+
 export const cadUser = function (
   listener: HTMLHeadElement,
   nameInput: HTMLInputElement,

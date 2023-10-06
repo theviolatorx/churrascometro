@@ -1,6 +1,7 @@
 import { app } from "./main.js";
-import { removeFormCad } from "../events/events.js";
+import { removeScreenResult } from "../events/events.js";
 import { tipoProduto } from "../functions/functions.js";
+//TODO: Fix: Resolver o problema de fechar a janela de Resultdo
 export const result = function (resultado) {
     const screen_people = document.getElementById("container");
     screen_people.setAttribute("style", "display: none;");
@@ -26,6 +27,6 @@ export const result = function (resultado) {
     container_result.appendChild(headerResul);
     screen_result.appendChild(container_result);
     app.appendChild(screen_result);
-    removeFormCad(app, screen_result, container_result);
+    removeScreenResult(app, screen_result, container_result, screen_people);
     // screen_people.removeAttribute('style');
 };

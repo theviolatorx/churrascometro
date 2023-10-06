@@ -27,6 +27,12 @@ export const removeFormCad = function (pai, filho, listener) {
         removeNode(pai, filho, listener);
     });
 };
+export const removeScreenResult = function (pai, filho, listener, screen_people) {
+    listener.addEventListener("click", () => {
+        screen_people.removeAttribute('style');
+        removeNode(pai, filho, listener);
+    });
+};
 export const cadUser = function (listener, nameInput, emailInput, cepInput, consentInput, pai, filho, listener1) {
     listener.addEventListener("click", () => {
         const customer = {

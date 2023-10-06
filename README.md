@@ -69,3 +69,9 @@ O objetivo desta atividade é desenvolver uma calculadora chamada "Churrascômet
 ## Telas
 
 <img src='./img/Screenshot_0.jpg' width='300px'><img src='./img/Screenshot_1.jpg' width='300px'><img src='./img/Screenshot_3.jpg' width='300px'><img src='./img/Screenshot_4.jpg' width='300px'>
+
+## O que precisa ser melhorado
+
+    1. Responsividade;
+    2. Posicionamento de elementos (Botão fechas fora de posição);
+    3. Refatorar e melhorar as funções e eventos;
